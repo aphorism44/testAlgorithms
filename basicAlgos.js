@@ -3,23 +3,20 @@
 
 var sortThis = [99,95,91,87,84,82,79,72,65,64,62,62,61,59,51,44,43,42,39];
 
-mergeSort(sortThis);
+console.log(sortThis)
+
+var sorted = mergeSort(sortThis);
+console.log("answer is: " + sorted);
 
 function mergeSort(arr) {
-    
-    //1. break up arrays to one; can use JS for this
-    var arrs = [], elemCount = arr.length;
-    
-    for (var i = 0; i < elemCount; i++)
-        arrs.push(arr.slice(i, i + 1));
-    console.log(arrs);
-    
-    //2. now merge each one until there's only 1 array left
-    
-    
+    var len = arr.length;
+    if (len <= 1) {
+        return arr;
+    } else {
+        var middle = Math.floor(len/2);
+        return mergeArrays(mergeSort(arr.slice(0, middle)), mergeSort(arr.slice(middle)));
+    }
 }
-
-
 
 
 function mergeArrays(arrA, arrB) {
